@@ -183,28 +183,23 @@ class FeedLoadService : Service() {
 
         subscriptions
             .take(1)
-
             .doOnNext {
                 currentProgress.set(0)
                 maxProgress.set(it.size)
             }
             .filter { it.isNotEmpty() }
-
             .observeOn(AndroidSchedulers.mainThread())
             .doOnNext {
                 startForeground(NOTIFICATION_ID, notificationBuilder.build())
                 updateNotificationProgress(null)
                 broadcastProgress()
             }
-
             .observeOn(Schedulers.io())
             .flatMap { Flowable.fromIterable(it) }
             .takeWhile { !cancelSignal.get() }
-
             .parallel(PARALLEL_EXTRACTIONS, PARALLEL_EXTRACTIONS * 2)
             .runOn(Schedulers.io(), PARALLEL_EXTRACTIONS * 2)
             .filter { !cancelSignal.get() }
-
             .map { subscriptionEntity ->
                 var error: Throwable? = null
                 try {
@@ -225,7 +220,6 @@ class FeedLoadService : Service() {
                             }
                             .blockingGet()
                     } as ListInfo<StreamInfoItem>
-
                     return@map Notification.createOnNext(Pair(subscriptionEntity.uid, listInfo))
                 } catch (e: Throwable) {
                     if (error == null) {
