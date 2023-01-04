@@ -62,8 +62,8 @@ android {
             shrinkResources false // disabled to fix F-Droid's reproducible build
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             archivesBaseName = 'app'
-            applicationIdSuffix ".Kitkat"
-            resValue "string", "app_name", "NewPipe " + "Kitkat"
+            applicationIdSuffix ".Adapt"
+            resValue "string", "app_name", "NewPipe " + "Adapt"
         }
     }
 
