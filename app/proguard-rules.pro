@@ -51,6 +51,3 @@
     private void writeObject(java.io.ObjectOutputStream);
     private void readObject(java.io.ObjectInputStream);
 }
-
-# for some reason NotificationModeConfigFragment wasn't kept (only referenced in a preference xml)
--keep class org.schabi.newpipe.settings.notifications.** { *; }
