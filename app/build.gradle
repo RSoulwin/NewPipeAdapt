@@ -59,7 +59,7 @@ android {
                 archivesBaseName = 'NewPipe_' + System.getProperty('packageSuffix')
             }
             minifyEnabled true
-            shrinkResources false // disabled to fix F-Droid's reproducible build
+            shrinkResources true // Don't forget to disable it to fix for F-Droid's reproducible build
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             archivesBaseName = 'app'
             applicationIdSuffix ".Adapt"
